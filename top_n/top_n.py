@@ -30,12 +30,16 @@ def word_count(rdd):
     return count_rdd
 
 
-if __name__ == "__main__":
-    text_rdd = sc.textFile("../data/word_count.txt")
+def main():
     counts = word_count(text_rdd)
     print(counts.take(10))
     # get the top n high frequency words
     topn = counts.top(TOP_N, key=lambda x: x[1])
     print(topn)
+
+
+if __name__ == "__main__":
+    text_rdd = sc.textFile("../data/word_count.txt")
+    main()
 
 
