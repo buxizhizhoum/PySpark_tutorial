@@ -21,7 +21,7 @@ os.environ['PYSPARK_SUBMIT_ARGS'] = \
 
 TOP_N = 2
 
-conf = SparkConf().setAppName("TopK").setMaster("local[2]")
+conf = SparkConf().setAppName("TopN").setMaster("local[2]")
 sc = SparkContext(conf=conf)
 
 
