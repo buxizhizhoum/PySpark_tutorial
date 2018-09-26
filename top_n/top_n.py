@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 """
 get the top n words after word count
+
+refer: https://stackoverflow.com/a/34293270/8025086
 """
 from __future__ import print_function
 import os
