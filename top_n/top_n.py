@@ -18,7 +18,7 @@ os.environ['PYSPARK_SUBMIT_ARGS'] = \
     '--packages org.apache.spark:spark-streaming-kafka-0-8_2.11:2.3.1 ' \
     'pyspark-shell'
 
-TOP_N = 10
+TOP_N = 3
 
 conf = SparkConf().setAppName("TopK").setMaster("local[2]")
 sc = SparkContext(conf=conf)
