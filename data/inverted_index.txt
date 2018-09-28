@@ -1,0 +1,9 @@
+id1 the spark
+id2 the storm
+id3 hadoop bigdata
+id4 pandas numpy
+id5 spark sql
+id6 bigdata tools
+id7 spark dataframe
+id8 mapreduce
+id9 spark streaming
