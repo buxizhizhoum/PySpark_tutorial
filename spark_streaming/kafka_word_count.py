@@ -33,22 +33,29 @@ bootstrap_servers = "localhost:9092"
 # kafka config info
 kafka_params = {"metadata.broker.list": bootstrap_servers}
 
-# initialize stream to consume data from kafka
-kafka_stream = KafkaUtils.createDirectStream(ssc=ssc,
-                                             topics=topic_to_sub,
-                                             kafkaParams=kafka_params)
 
-kafka_stream.pprint()
-# get data
-lines = kafka_stream.map(lambda x: x[1])
+def main():
+    # initialize stream to consume data from kafka
+    kafka_stream = KafkaUtils\
+        .createDirectStream(ssc=ssc,
+                            topics=topic_to_sub,
+                            kafkaParams=kafka_params)
 
-# word count
-counts = lines\
-    .flatMap(lambda line: line.split(" "))\
-    .map(lambda word: (word, 1))\
-    .reduceByKey(lambda x, y: x + y)
+    kafka_stream.pprint()
+    # get data
+    lines = kafka_stream.map(lambda x: x[1])
 
-counts.pprint()
+    # word count
+    counts = lines\
+        .flatMap(lambda line: line.split(" "))\
+        .map(lambda word: (word, 1))\
+        .reduceByKey(lambda x, y: x + y)
 
-ssc.start()
-ssc.awaitTermination()
+    counts.pprint()
+
+    ssc.start()
+    ssc.awaitTermination()
+
+
+if __name__ == "__main__":
+    main()
