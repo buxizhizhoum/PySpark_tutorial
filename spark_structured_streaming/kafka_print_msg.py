@@ -30,6 +30,7 @@ df = spark.readStream\
 
 df.printSchema()
 processed_df = df.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)")
+# todo: df.show() has some problems here
 
 # output to console
 output_df = processed_df.writeStream\
