@@ -1,7 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 """
-word count with spark socket streaming
+word count with spark socket streaming.
+
+spark streaming read data from source as rdd,
+spark structured streaming read data from source as df
 """
 from __future__ import print_function
 import os
