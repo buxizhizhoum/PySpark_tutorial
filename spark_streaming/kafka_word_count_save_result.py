@@ -66,7 +66,7 @@ def save_redis(rdd):
         for item in rdd.collect():
             # item is in type of (word, count)
             if item[0]:
-                r.hset("word_count", item[0], item[1])
+                pipe.hset("word_count", item[0], item[1])
 
         pipe.execute()
 
