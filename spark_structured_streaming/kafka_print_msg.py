@@ -16,10 +16,11 @@ os.environ['PYSPARK_SUBMIT_ARGS'] = \
     'pyspark-shell'
 
 spark = SparkSession \
-        .builder \
-        .appName("KafkaStructuredStreaming") \
-        .getOrCreate()
+    .builder \
+    .appName("KafkaStructuredStreaming") \
+    .getOrCreate()
 
+# create a kafka source for streaming queries
 df = spark.readStream\
     .format("kafka")\
     .option("kafka.bootstrap.servers", "127.0.0.1:9092")\
@@ -29,6 +30,7 @@ df = spark.readStream\
 df.printSchema()
 processed_df = df.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)")
 
+# output to console
 output_df = processed_df.writeStream\
     .format("console")\
     .option("truncate", "false")\
