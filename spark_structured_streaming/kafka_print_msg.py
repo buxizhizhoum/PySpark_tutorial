@@ -21,6 +21,7 @@ spark = SparkSession \
     .getOrCreate()
 
 # create a kafka source for streaming queries
+# todo: batch duration
 df = spark.readStream\
     .format("kafka")\
     .option("kafka.bootstrap.servers", "127.0.0.1:9092")\
