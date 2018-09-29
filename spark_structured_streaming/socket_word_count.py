@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 """
-spark structured streaming word count
+spark structured streaming word count, df based?
 come from Learning PySpark by Tomasz Drabas.
 """
 from __future__ import print_function
