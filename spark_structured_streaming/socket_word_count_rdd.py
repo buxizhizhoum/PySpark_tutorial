@@ -35,8 +35,9 @@ lines = spark\
 #         f.split(lines.value, " ")  # split with space
 #     ).alias("words")
 #     )
+line_rdd = lines.rdd
 
-words = lines.flatMap(lambda line: line.split()).map(lambda word: (word, 1)).reduceByKey(lambda x, y: x + y)
+words = line_rdd.flatMap(lambda line: line.split()).map(lambda word: (word, 1)).reduceByKey(lambda x, y: x + y)
 
 # word_count = words.groupBy("words").count()
 
