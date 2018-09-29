@@ -59,6 +59,7 @@ def save_redis(rdd):
     """
     # how to use foreachPartition?
     # when partition is used, always _lock is not serializable?
+    # does it the problem of redis.py?
     with r.pipeline(transaction=False) as pipe:
         for item in rdd.collect():
             # item is in type of (word, count)
