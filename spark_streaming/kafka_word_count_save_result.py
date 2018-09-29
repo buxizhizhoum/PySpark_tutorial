@@ -3,6 +3,8 @@
 """
 word count with kafka and save result to redis
 consume data from kafka topic "test" and do word count with batch duration of 1 second
+
+the result saved in redis is always the latest, the result before is rewrited.
 """
 from __future__ import print_function
 import os
