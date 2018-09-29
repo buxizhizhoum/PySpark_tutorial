@@ -82,6 +82,7 @@ def update(r_conn, hkey, field, value):
     :param value:
     :return:
     """
+    # todo: a lua script will help to reduce rtt
     original_value = r_conn.hget(hkey, field)
     if original_value:
         # if exist accumulate
