@@ -8,7 +8,6 @@ import os
 from pyspark import SparkConf
 from pyspark import SparkContext
 from pyspark.sql import SparkSession
-from pyspark.sql import Row
 from pyspark.sql.types import StructField
 from pyspark.sql.types import StringType
 from pyspark.sql.types import StructType
