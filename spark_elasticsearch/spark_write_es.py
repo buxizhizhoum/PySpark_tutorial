@@ -23,6 +23,7 @@ os.environ['PYSPARK_SUBMIT_ARGS'] = \
 conf = SparkConf().setAppName("write_es").setMaster("local[2]")
 sc = SparkContext(conf=conf)
 
+# config refer: https://www.elastic.co/guide/en/elasticsearch/hadoop/current/configuration.html
 es_write_conf = {
     # specify the node that we are sending data to (this should be the master)
     "es.nodes": 'localhost',
