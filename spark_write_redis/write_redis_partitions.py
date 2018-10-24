@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 write to redis foreachPartition
+nc -lk 9999
 refer: http://spark.apache.org/docs/latest/streaming-programming-guide.html#design-patterns-for-using-foreachrdd
 """
 from __future__ import print_function
@@ -47,7 +48,7 @@ def main():
     words = lines.flatMap(lambda line: line.split(" "))
     pairs = words.map(lambda word: (word, 1))
     word_counts = pairs.reduceByKey(lambda x, y: x + y)
-
+    # save result to redis
     word_counts.foreachRDD(lambda rdd: rdd.foreachPartition(write_redis))
 
 
