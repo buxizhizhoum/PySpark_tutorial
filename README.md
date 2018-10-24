@@ -4,6 +4,8 @@
 **data** contains the test data
 
 **word_count** is a basic example to understand spark
+  
+    nc -lk 9999 to simulate words stream with socket
 
 **top_n** refers to [here](https://stackoverflow.com/a/34293270/8025086) and is
 used to get the top N numbers.
