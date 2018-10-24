@@ -71,6 +71,19 @@ def save_redis(rdd):
         pipe.execute()
 
 
+def write_redis(partition):
+    """
+    this method will create redis obj for each partition
+    :param partition:
+    :return:
+    """
+    print("partition:", partition)
+    # create redis obj for every partition
+    redis_obj = redis.StrictRedis(host='localhost', port=6379)
+    for item in partition:
+        redis_obj.hset("word_count", item[0], item[1])
+
+
 def word_count():
     """
     do word count on streaming data from kafka
@@ -92,7 +105,10 @@ def word_count():
 def main():
     counts = word_count()
     # save to redis
-    counts.foreachRDD(save_redis)
+    # counts.foreachRDD(save_redis)
+
+    # save to redis for each partition
+    counts.foreachRDD(lambda rdd: rdd.foreachPartition(write_redis))
 
     ssc.start()
     ssc.awaitTermination()
