@@ -34,7 +34,10 @@ es_write_conf = {
     # is the input JSON?
     "es.input.json": "yes",
     # is there a field in the mapping that should be used to specify the ES document ID
-    "es.mapping.id": "doc_id"
+    "es.mapping.id": "doc_id",
+    # The write operation elasticsearch-hadoop should perform
+    # index or update
+    "es.write.operation": "upsert"
 }
 
 
