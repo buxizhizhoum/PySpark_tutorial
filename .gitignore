@@ -1,3 +1,4 @@
 *.pyc
 .idea/
 .spark-warehouse/
+spark-redis
