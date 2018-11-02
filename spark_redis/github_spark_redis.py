@@ -5,10 +5,7 @@ example of open source project spark-redis
 """
 from __future__ import print_function
 import os
-import json
 
-from pyspark import SparkContext
-from pyspark import SparkConf
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, IntegerType, DoubleType
 
@@ -34,20 +31,20 @@ if __name__ == "__main__":
     schema = StructType(fields)
 
     # infer schema
-    # load_df = spark\
-    #     .read\
-    #     .format("org.apache.spark.sql.redis")\
-    #     .option("keys.pattern", "meterdata_1000000:1000000_20181101_2215_pttl") \
-    #     .option("infer.schema", True)\
-    #     .load()
-    
-    # specify schema
-    load_df = spark \
-        .read \
-        .format("org.apache.spark.sql.redis") \
-        .option("keys.pattern", "meterdata_1000000:1000000_20181101_2215_pttl") \
-        .schema(schema) \
+    load_df = spark\
+        .read\
+        .format("org.apache.spark.sql.redis")\
+        .option("keys.pattern", "meterdata_1000000:1000000_20181102_0815_pttl") \
+        .option("infer.schema", True)\
         .load()
+
+    # specify schema
+    # load_df = spark \
+    #     .read \
+    #     .format("org.apache.spark.sql.redis") \
+    #     .option("keys.pattern", "meterdata_1000000:1000000_20181101_*_pttl") \
+    #     .schema(schema) \
+    #     .load()
 
     load_df.printSchema()
     load_df.show()
